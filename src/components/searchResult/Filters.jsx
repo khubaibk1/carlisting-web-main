@@ -3,6 +3,41 @@ import Image from "next/image";
 import filterIcon from "../../../public/images/filter.svg";
 import arrow from "../../../public/images/arrowDwon.png";
 import arrowtop from "../../../public/images/arrowtop.png";
+import CheckBox from "./CheckBox";
+import Dropdown from "./Dropdown";
+const BMWList = [
+  "Aston Martin",
+  "Aston Martin",
+  "Aston Martin",
+  "Aston Martin",
+  "Aston Martin",
+  "Aston Martin",
+  "Aston Martin",
+  "Aston Martin",
+  "Aston Martin",
+  "Aston Martin",
+];
+const GranCoupe = [
+  "Aston Martin",
+  "Aston Martin",
+  "Aston Martin",
+  "Aston Martin",
+  "Aston Martin",
+];
+const FuelDropdown = ["Diesel", "Hybrid", "Electric", "Petrol"];
+
+const AllUsed = ["New Clear", "Used Clear", "All Used", "All New"];
+
+const BodyType = [
+  "Convertible",
+  "Couple",
+  "Estate",
+  "Hatchback",
+  "Roadster",
+  "Saloon",
+];
+
+const GearBox = ["Atomatic", "Manual"];
 
 const Filters = () => {
   const [selectedCheckbox, setSelectedCheckbox] = useState(null);
@@ -11,10 +46,17 @@ const Filters = () => {
     const checkboxId = event.target.id;
     setSelectedCheckbox(checkboxId);
   };
+  const [selecteedCheckbox, setSeleectedCheckbox] = useState(null);
+
+  const handleCheeckboxChange = (value) => {
+    setSeleectedCheckbox(value);
+  };
 
   const [showAllUsedDropdown, setShowAllUsedDropdown] = useState(false);
   const [showBmwDropdown, setShowBmwDropdown] = useState(false);
   const [showBodyTypeDropdown, setShowBodyTypeDropdown] = useState(false);
+  const [showGearBoxDropdown, setGearBoxDropdown] = useState(false);
+  const [showFuelDropdown, setFuelDropdown] = useState(false);
 
   const toggleDropdown = (dropdownName) => {
     switch (dropdownName) {
@@ -27,7 +69,13 @@ const Filters = () => {
       case "BodyType":
         setShowBodyTypeDropdown(!showBodyTypeDropdown);
         break;
-      // Add more cases for other dropdowns as needed
+      case "GearBox":
+        setGearBoxDropdown(!showGearBoxDropdown);
+        break;
+      case "Fuel":
+        setFuelDropdown(!showFuelDropdown);
+        break;
+
       default:
         break;
     }
@@ -62,60 +110,16 @@ const Filters = () => {
                   </p>
                   <div className="p-4">
                     <div className="flex flex-col h-[130px] justify-between">
-                      <div className="flex items-center ">
-                        <input
-                          type="checkbox"
-                          id="checkbox1"
-                          name="myCheckboxGroup"
-                          className="form-checkbox h-5 w-5 text-indigo-600"
-                          checked={selectedCheckbox === "checkbox1"}
-                          onChange={handleCheckboxChange}
-                        />
-                        <label htmlFor="checkbox1" className="ml-2">
-                          New Clear
-                        </label>
-                      </div>
-
-                      <div className="flex items-center">
-                        <input
-                          type="checkbox"
-                          id="checkbox2"
-                          name="myCheckboxGroup"
-                          className="form-checkbox h-5 w-5 text-indigo-600"
-                          checked={selectedCheckbox === "checkbox2"}
-                          onChange={handleCheckboxChange}
-                        />
-                        <label htmlFor="checkbox2" className="ml-2">
-                          Used Clear
-                        </label>
-                      </div>
-
-                      <div className="flex items-center">
-                        <input
-                          type="checkbox"
-                          id="checkbox3"
-                          name="myCheckboxGroup"
-                          className="form-checkbox h-5 w-5 text-indigo-600"
-                          checked={selectedCheckbox === "checkbox3"}
-                          onChange={handleCheckboxChange}
-                        />
-                        <label htmlFor="checkbox3" className="ml-2">
-                          All Used
-                        </label>
-                      </div>
-                      <div className="flex items-center">
-                        <input
-                          type="checkbox"
-                          id="checkbox4"
-                          name="myCheckboxGroup"
-                          className="form-checkbox h-5 w-5 text-indigo-600"
-                          checked={selectedCheckbox === "checkbox4"}
-                          onChange={handleCheckboxChange}
-                        />
-                        <label htmlFor="checkbox3" className="ml-2">
-                          All New
-                        </label>
-                      </div>
+                      {AllUsed.map((item, index) => (
+                        <div key={index}>
+                          <CheckBox
+                            BoxName={"Fuel"}
+                            Value={item}
+                            selected={selecteedCheckbox === item}
+                            onChange={handleCheeckboxChange}
+                          />
+                        </div>
+                      ))}
                     </div>
                   </div>
                 </div>
@@ -132,13 +136,14 @@ const Filters = () => {
               className="flex flex-row justify-around items-center w-[99px] h-[42px]  border-[#0866FC] border-[2px] rounded-[24px] py-[10px] px-[16px]"
               onClick={() => toggleDropdown("Bmw")}
             >
-              <span className="    text-[#141415] font-normal">BMW</span>
-              <Image src={arrow} />
+              <span className="    text-[#141415] font-normal">
+                <Dropdown options={BMWList} initialValue="BMW" scroll={true} />
+              </span>
             </button>
 
             {showBmwDropdown && (
               <>
-                <div
+                {/* <div
                   className="absolute mt-[3px] shadow-xl bg-[#95e5e5]"
                   style={{ boxShadow: "0 0 5px rgba(0, 0, 0, 0.5)" }}
                 >
@@ -146,34 +151,133 @@ const Filters = () => {
                 </div>
                 <div className="w-[292px] absolute h-[218px] bg-[#FFFFFF] p-[14px]  z-10">
                   <button className="w-[292px] h-"></button>
-                </div>
+                  
+                </div> */}
               </>
             )}
           </div>
 
           <button className="flex flex-row justify-around items-center w-[211px]  border-[#0866FC] border-[2px] rounded-[24px] py-[10px] px-[16px]">
             <span className="text-[#141415] font-normal">
-              2 Series Gran Coupe
+              <Dropdown
+                options={GranCoupe}
+                initialValue="2 Series Gran Coupe"
+                scroll={false}
+              />
             </span>
-            <Image src={arrow} />
           </button>
-
-          <button className="flex flex-row justify-around items-center w-[138px] h-[42px] border-[#D3D3D6] border-[2px] rounded-[24px]  py-[10px] px-[16px]">
-            <span className=" text-[#141415] font-normal">Body Type</span>
-            <Image src={arrow} />
-          </button>
+          <div>
+            <button
+              className="flex flex-row justify-around items-center w-[138px] h-[42px] border-[#D3D3D6] border-[2px] rounded-[24px]  py-[10px] px-[16px]"
+              onClick={() => toggleDropdown("BodyType")}
+            >
+              <span className=" text-[#141415] font-normal">Body Type</span>
+              <Image src={arrow} />
+            </button>
+            {showBodyTypeDropdown && (
+              <div
+                className="absolute mt-[3px] shadow-xl bg-[#f3f4f4]"
+                style={{ boxShadow: "0 0 5px rgba(0, 0, 0, 0.5)" }}
+              >
+                <Image src={arrowtop} className="shadow-xl ml-[30px] z-10" />
+                <div className="w-[292px] h-[294px] bg-[#FFFFFF] p-[14px]  z-10">
+                  <p className="text-[24px] w-[150px] text-center font-small mt-[4px]">
+                    Body Type
+                  </p>
+                  <div className="p-4">
+                    <div className="flex flex-col h-[200px] justify-between">
+                      {BodyType.map((item, index) => (
+                        <div key={index}>
+                          <CheckBox
+                            BoxName={"Fuel"}
+                            Value={item}
+                            selected={selecteedCheckbox === item}
+                            onChange={handleCheeckboxChange}
+                          />
+                        </div>
+                      ))}
+                    </div>
+                  </div>
+                </div>
+              </div>
+            )}
+          </div>
           <button className="flex flex-row justify-around items-center w-[115px] h-[42px] border-[#D3D3D6] border-[2px] rounded-[24px]  py-[10px] px-[16px]">
             <span className=" text-[#141415] font-normal">Budget</span>
             <Image src={arrow} />
           </button>
-          <button className="flex flex-row justify-around items-center w-[121px] h-[42px] border-[#D3D3D6] border-[2px] rounded-[24px]  py-[10px] px-[16px]">
-            <span className=" text-[#141415] font-normal">Gearbox</span>
-            <Image src={arrow} />
-          </button>
-          <button className="flex flex-row justify-around items-center w-[89px] h-[42px] border-[#D3D3D6] border-[2px] rounded-[24px]  py-[10px] px-[16px]">
-            <span className=" text-[#141415] font-normal">Fuel</span>
-            <Image src={arrow} />
-          </button>
+          <div>
+            <button
+              className="flex flex-row justify-around items-center w-[121px] h-[42px] border-[#D3D3D6] border-[2px] rounded-[24px]  py-[10px] px-[16px]"
+              onClick={() => toggleDropdown("GearBox")}
+            >
+              <span className=" text-[#141415] font-normal">Gearbox</span>
+              <Image src={arrow} />
+            </button>
+            {showGearBoxDropdown && (
+              <div
+                className="absolute mt-[3px] shadow-xl bg-[#f3f4f4]"
+                style={{ boxShadow: "0 0 5px rgba(0, 0, 0, 0.5)" }}
+              >
+                <Image src={arrowtop} className="shadow-xl ml-[30px] z-10" />
+                <div className="w-[292px] h-[156px] bg-[#FFFFFF] p-[14px]  z-10">
+                  <p className="text-[24px] w-[150px] text-center font-small mt-[4px]">
+                    Gearbox
+                  </p>
+                  <div className="p-4">
+                    <div className="flex flex-col h-[60px] justify-between">
+                      {GearBox.map((item, index) => (
+                        <div key={index}>
+                          <CheckBox
+                            BoxName={"Fuel"}
+                            Value={item}
+                            selected={selecteedCheckbox === item}
+                            onChange={handleCheeckboxChange}
+                          />
+                        </div>
+                      ))}
+                    </div>
+                  </div>
+                </div>
+              </div>
+            )}
+          </div>
+          <div>
+            <button
+              className="flex flex-row justify-around items-center w-[89px] h-[42px] border-[#D3D3D6] border-[2px] rounded-[24px]  py-[10px] px-[16px]"
+              onClick={() => toggleDropdown("Fuel")}
+            >
+              <span className=" text-[#141415] font-normal">Fuel</span>
+              <Image src={arrow} />
+            </button>
+            {showFuelDropdown && (
+              <div
+                className="absolute mt-[3px] shadow-xl bg-[#f3f4f4]"
+                style={{ boxShadow: "0 0 5px rgba(0, 0, 0, 0.5)" }}
+              >
+                <Image src={arrowtop} className="shadow-xl ml-[30px] z-10" />
+                <div className="w-[292px] h-[218px] bg-[#FFFFFF] p-[14px]  z-10">
+                  <p className="text-[24px] w-[150px] text-center font-small mt-[4px]">
+                    Fuel
+                  </p>
+                  <div className="p-4">
+                    <div className="flex flex-col h-[130px] justify-between">
+                      {FuelDropdown.map((item, index) => (
+                        <div key={index}>
+                          <CheckBox
+                            BoxName={"Fuel"}
+                            Value={item}
+                            selected={selecteedCheckbox === item}
+                            onChange={handleCheeckboxChange}
+                          />
+                        </div>
+                      ))}
+                    </div>
+                  </div>
+                </div>
+              </div>
+            )}
+          </div>
         </div>
 
         <div>
