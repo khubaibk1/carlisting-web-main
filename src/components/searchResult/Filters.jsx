@@ -5,6 +5,10 @@ import arrow from "../../../public/images/arrowDwon.png";
 import arrowtop from "../../../public/images/arrowtop.png";
 import CheckBox from "./CheckBox";
 import Dropdown from "./Dropdown";
+import CustomDropdown from "../home/tabs/CustomDropdown";
+import Sort from "../usedcar/Sort";
+import Model from "../usedcar/filter/Model";
+
 const BMWList = [
   "Aston Martin",
   "Aston Martin",
@@ -36,6 +40,30 @@ const BodyType = [
   "Roadster",
   "Saloon",
 ];
+const BudgetMinimum=[
+  "$5000",
+  "Aston Martin",
+  "Aston Martin",
+  "Aston Martin",
+  "Aston Martin",
+  "Aston Martin",
+  "Aston Martin",
+  "Aston Martin",
+  "Aston Martin",
+  "Aston Martin",
+]
+const BudgetMaximum=[
+  "$80000",
+  "Aston Martin",
+  "Aston Martin",
+  "Aston Martin",
+  "Aston Martin",
+  "Aston Martin",
+  "Aston Martin",
+  "Aston Martin",
+  "Aston Martin",
+  "Aston Martin",
+]
 
 const GearBox = ["Atomatic", "Manual"];
 
@@ -57,6 +85,7 @@ const Filters = () => {
   const [showBodyTypeDropdown, setShowBodyTypeDropdown] = useState(false);
   const [showGearBoxDropdown, setGearBoxDropdown] = useState(false);
   const [showFuelDropdown, setFuelDropdown] = useState(false);
+  const [showBudgetBoxDropdown, setBudgetBoxDropdown] = useState(false);
 
   const toggleDropdown = (dropdownName) => {
     switch (dropdownName) {
@@ -75,17 +104,32 @@ const Filters = () => {
       case "Fuel":
         setFuelDropdown(!showFuelDropdown);
         break;
+        case "BudgetBox":
+        setBudgetBoxDropdown(!showBudgetBoxDropdown);
+        break;
+
 
       default:
         break;
     }
+  };
+  const [isModalOpen, setIsModalOpen] = useState(false);
+
+  const handleModalOpen = () => {
+      setIsModalOpen(true);
+  };
+
+  const handleModalClose = () => {
+      setIsModalOpen(false);
   };
 
   return (
     <div>
       <div className="flex flex-row justify-between w-full items-center mt-[40px]">
         <div className="flex flex-row w-[1133px] h-[42px] justify-around text-[16px]">
-          <button className="flex items-center w-[70px] h-[42px] space-x-2 px-4 py-2 bg-[#0866FC] text-white rounded-[24px]">
+          <button className="flex items-center w-[70px] h-[42px] space-x-2 px-4 py-2 bg-[#0866FC] text-white rounded-[24px]"
+           onClick={handleModalOpen}
+          >
             <Image src={filterIcon} />
             <span>3</span>
           </button>
@@ -100,7 +144,7 @@ const Filters = () => {
 
             {showAllUsedDropdown && (
               <div
-                className="absolute mt-[3px] shadow-xl bg-[#f3f4f4]"
+                className="absolute mt-[3px] shadow-xl bg-[#f3f4f4] z-10"
                 style={{ boxShadow: "0 0 5px rgba(0, 0, 0, 0.5)" }}
               >
                 <Image src={arrowtop} className="shadow-xl ml-[30px] z-10" />
@@ -127,7 +171,7 @@ const Filters = () => {
             )}
           </div>
 
-          <button className="w-[102px]  border-[#D3D3D6] border-[2px] rounded-[24px] ">
+          <button className="w-[102px]  border-[#D3D3D6] border-[2px] rounded-[24px] z-10">
             Location
           </button>
 
@@ -140,21 +184,7 @@ const Filters = () => {
                 <Dropdown options={BMWList} initialValue="BMW" scroll={true} />
               </span>
             </button>
-
-            {showBmwDropdown && (
-              <>
-                {/* <div
-                  className="absolute mt-[3px] shadow-xl bg-[#95e5e5]"
-                  style={{ boxShadow: "0 0 5px rgba(0, 0, 0, 0.5)" }}
-                >
-                  <Image src={arrowtop} className="shadow-xl ml-[30px] z-10" />
-                </div>
-                <div className="w-[292px] absolute h-[218px] bg-[#FFFFFF] p-[14px]  z-10">
-                  <button className="w-[292px] h-"></button>
-                  
-                </div> */}
-              </>
-            )}
+            
           </div>
 
           <button className="flex flex-row justify-around items-center w-[211px]  border-[#0866FC] border-[2px] rounded-[24px] py-[10px] px-[16px]">
@@ -166,7 +196,7 @@ const Filters = () => {
               />
             </span>
           </button>
-          <div>
+          <div className="z-10">
             <button
               className="flex flex-row justify-around items-center w-[138px] h-[42px] border-[#D3D3D6] border-[2px] rounded-[24px]  py-[10px] px-[16px]"
               onClick={() => toggleDropdown("BodyType")}
@@ -202,11 +232,51 @@ const Filters = () => {
               </div>
             )}
           </div>
-          <button className="flex flex-row justify-around items-center w-[115px] h-[42px] border-[#D3D3D6] border-[2px] rounded-[24px]  py-[10px] px-[16px]">
+
+
+
+           <div className="z-10">
+          <button className="flex flex-row justify-around items-center w-[115px] h-[42px] border-[#D3D3D6] border-[2px] rounded-[24px]  py-[10px] px-[16px]"
+          onClick={() => toggleDropdown("BudgetBox")}
+          >
             <span className=" text-[#141415] font-normal">Budget</span>
             <Image src={arrow} />
           </button>
-          <div>
+          {showBudgetBoxDropdown && (
+              <div
+                className="absolute mt-[3px] shadow-xl bg-[#f3f4f4]"
+                style={{ boxShadow: "0 0 5px rgba(0, 0, 0, 0.5)" }}
+              >
+                <Image src={arrowtop} className="shadow-xl ml-[30px] z-10" />
+                <div className="w-[368px] h-[187px] bg-[#FFFFFF] p-[14px]  z-10">
+                  <p className="text-[24px] w-[120px] text-center font-small mt-[4px]">
+                    Budget 
+                  </p>
+                  <div className="p-4 flex flex-row justify-between">
+                    <div className="flex flex-col h-[130px] ">
+                      <p className="mb-[7px]">Minimum</p>
+                    <span className="    text-[#141415] font-normal w-[150px] border-[1px] pr-[5px] border-solid border-black">
+                   <CustomDropdown options={BudgetMinimum} initialValue="Any" HoverPurple={"true"}/>
+                    </span>
+                      
+                    </div>
+                    <div className="flex flex-col h-[130px] ">
+                      <p className="mb-[7px]">Minimum</p>
+                    <span className="    text-[#141415] font-normal w-[150px] border-[1px] pr-[5px] border-solid border-black ">
+                   <CustomDropdown  options={BudgetMaximum} initialValue="$180,000" HoverPurple={true}/>
+                    </span>
+                      
+                    </div>
+                  </div>
+                </div>
+              </div>
+            )}
+          </div>                          
+
+
+
+
+          <div className="z-10">
             <button
               className="flex flex-row justify-around items-center w-[121px] h-[42px] border-[#D3D3D6] border-[2px] rounded-[24px]  py-[10px] px-[16px]"
               onClick={() => toggleDropdown("GearBox")}
@@ -242,7 +312,7 @@ const Filters = () => {
               </div>
             )}
           </div>
-          <div>
+          <div className="z-10">
             <button
               className="flex flex-row justify-around items-center w-[89px] h-[42px] border-[#D3D3D6] border-[2px] rounded-[24px]  py-[10px] px-[16px]"
               onClick={() => toggleDropdown("Fuel")}
@@ -281,20 +351,17 @@ const Filters = () => {
         </div>
 
         <div>
-          <p className="text-[20px] font-medium text-[#0866FC] underline">
+          <p className="text-[20px] font-medium text-[#0866FC] underline ml-[34px]">
             Clear all
           </p>
         </div>
       </div>
       <div className="flex flex-row items-center mt-[45px]">
-        <p className="mr-[10px]">Sorted by</p>
-        <button className="flex flex-row justify-around items-center w-[173px] h-[36px]  border-[#D3D3D6] border-[1px] rounded-[24px] py-[10px] px-[16px]">
-          <span className="text-[#141415] font-normal text-[14px]">
-            Prics: Low to High
-          </span>
-          <Image src={arrow} />
-        </button>
+        
+                        <Sort/>
+        
       </div>
+      <Model isOpen={isModalOpen} onClose={handleModalClose} />
     </div>
   );
 };

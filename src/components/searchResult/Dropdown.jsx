@@ -2,6 +2,7 @@ import React,{useState,useEffect,useRef} from 'react'
 import Image from 'next/image';
 import arrow from "../../../public/images/arrowDwon.png"
 import arrowtop from "../../../public/images/arrowtop.png"
+
 const Dropdown = ({ options, initialValue,scroll}) => {
     const [isOpen, setIsOpen] = useState(false);
     // const [selectedOption, setSelectedOption] = useState(initialValue);
@@ -63,6 +64,7 @@ const Dropdown = ({ options, initialValue,scroll}) => {
                     ))}
                 </div>
                 </div>
+                
                 </>
             )}
         </div>

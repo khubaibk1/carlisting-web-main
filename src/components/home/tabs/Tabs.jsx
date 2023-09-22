@@ -98,7 +98,7 @@ const Tabs = () => {
     const router = useRouter(); 
 
     const handleSearchClick = () => {
-        router.push('/SearchResult');
+        router.push('/used-car');
     };
 
     const renderSubTabsContent = () => {

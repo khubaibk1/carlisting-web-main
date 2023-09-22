@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useRef } from 'react';
 
-const CustomDropdown = ({ options, initialValue, tab, subTab }) => {
+const CustomDropdown = ({ options, initialValue, tab, subTab ,HoverPurple}) => {
     const [isOpen, setIsOpen] = useState(false);
     const [selectedOption, setSelectedOption] = useState(initialValue);
     const dropdownRef = useRef(null);
@@ -89,7 +89,7 @@ const CustomDropdown = ({ options, initialValue, tab, subTab }) => {
                     {options.map((option) => (
                         <div
                             key={option}
-                            className={`px-2 py-2 cursor-pointer hover:bg-gray-100`}
+                            className={`px-2 py-2 cursor-pointer ${HoverPurple?'hover:bg-[#672797] hover:text-white':'hover:bg-gray-100'}`}
                             onClick={() => {
                                 handleOptionSelect(option);
                             }}
