@@ -1,12 +1,19 @@
-import React, { useState } from "react";
+import React, { useState,useEffect } from "react";
 
 const SignIn = ({ Active, onClose }) => {
   const [close, setClose] = useState(false);
 
+  useEffect(() => {
+    if (Active) {
+      setClose(false);
+    }
+  }, [Active]);
+
   const handleClose = () => {
-    setClose(!close);
+    setClose(true);
     onClose();
   };
+
 
   return (
     <>
@@ -51,7 +58,11 @@ const SignIn = ({ Active, onClose }) => {
           </form>
           <button
             className="w-[350px] h-[48px] text-white bg-[#09A122] text-[20px] p-[5px] mb-[5px] mt-[14px] rounded-xl"
-            onClick={handleClose}
+            onClick={() => {
+                setactiveSignIn(!activeSignIn); 
+                onclick={handleClose}
+              }}
+            
           >
             Sign in
           </button>

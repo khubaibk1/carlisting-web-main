@@ -7,9 +7,13 @@ const Profile = ({Active, onClose}) => {
     const [activeSignIn,setactiveSignIn]=useState(false)
     const handleSignInClose = () => {
         setactiveSignIn(false);
+        onClose();
+      };
+      const handleSignUpClose = () => {
         setactiveSignUp(false);
         onClose();
       };
+      
   return (
     <>
     {Active&&
@@ -17,11 +21,10 @@ const Profile = ({Active, onClose}) => {
       <p className="text-[#672797] text-[20px] font-semibold">Profile</p>
       <button className="flex flex-row w-[218px] h-[50px] mt-[15px] ml-[12px]"
      onClick={() => {
-        setactiveSignIn(!activeSignIn);
-        if (activeSignIn) {
-          setactiveSignIn(false);
-          setactiveSignUp(false);
-        }
+       if (activeSignIn===false) {
+         setactiveSignIn(!activeSignIn);
+        }else
+        handleSignInClose()
       }}
       >
         <span className="text-black ">
@@ -40,7 +43,12 @@ const Profile = ({Active, onClose}) => {
         </span>
         <p className="pl-[15px]">Sign in</p>
       </button>
-      <button className="flex flex-row  w-[218px] h-[50px]  ml-[12px]" onClick={() => setactiveSignUp(!activeSignUp)} >
+      <button className="flex flex-row  w-[218px] h-[50px]  ml-[12px]" onClick={() => {
+        if (activeSignUp===false) {
+          setactiveSignUp(!activeSignUp);
+        }else
+        handleSignUpClose()
+      }} >
         <svg
           xmlns="http://www.w3.org/2000/svg"
           width="24"
@@ -58,7 +66,7 @@ const Profile = ({Active, onClose}) => {
     </div>
     }
     <SignUp Active={activeSignUp} onClose={handleSignInClose}/>
-    <SignIn Active={activeSignIn} onClose={handleSignInClose}/>
+    <SignIn Active={activeSignIn} onClose={handleSignUpClose}/>
     </>
   );
 };
