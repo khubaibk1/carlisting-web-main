@@ -1,13 +1,23 @@
-import React, { useState } from "react";
+import React, { useState,useEffect } from "react";
 import Status from "./Status";
 const { defaultHead } = require("next/head");
 
 const SignUp = ({ Active, onClose }) => {
-  const [close, setClose] = useState(false);
   const [activeStatus, setactiveStatus] = useState(false);
+  const [close, setClose] = useState(false);
+  useEffect(() => {
+    if (Active) {
+      setClose(false);
+    }
+  }, [Active]);
+
   const handleClose = () => {
-    setClose(!close);
+    setClose(true);
     onClose();
+  };
+  const handleSignUpClick = () => {
+    setactiveStatus(true);
+    handleClose(); 
   };
 
   return (
@@ -53,7 +63,8 @@ const SignUp = ({ Active, onClose }) => {
           </form>
           <button
             className="w-[350px] h-[48px] text-white bg-[#09A122] text-[20px] p-[5px] mb-[5px] mt-[14px] rounded-xl"
-            onClick={() => setactiveStatus(!activeStatus)}
+            onClick={handleSignUpClick}
+            
           >
             Sign Up
           </button>

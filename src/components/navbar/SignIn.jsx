@@ -59,7 +59,6 @@ const SignIn = ({ Active, onClose }) => {
           <button
             className="w-[350px] h-[48px] text-white bg-[#09A122] text-[20px] p-[5px] mb-[5px] mt-[14px] rounded-xl"
             onClick={() => {
-                setactiveSignIn(!activeSignIn); 
                 onclick={handleClose}
               }}
             

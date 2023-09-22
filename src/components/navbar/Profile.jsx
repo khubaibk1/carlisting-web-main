@@ -3,29 +3,35 @@ import React,{useState} from "react";
 import SignUp from "./SignUp";
 import SignIn from "./SignIn";
 const Profile = ({Active, onClose}) => {
-    const [activeSignUp,setactiveSignUp]=useState(false)
-    const [activeSignIn,setactiveSignIn]=useState(false)
-    const handleSignInClose = () => {
-        setactiveSignIn(false);
-        onClose();
-      };
-      const handleSignUpClose = () => {
-        setactiveSignUp(false);
-        onClose();
-      };
-      
+  const [activeSignUp, setActiveSignUp] = useState(false);
+  const [activeSignIn, setActiveSignIn] = useState(false);
+
+  const handleSignInClose = () => {
+    setActiveSignIn(false);
+    onClose();
+  };
+
+  const handleSignUpClose = () => {
+    setActiveSignUp(false);
+    onClose();
+  };
+
+  const handleSignInClick = () => {
+    setActiveSignIn(!activeSignIn);
+    setActiveSignUp(false); // Close SignUp if open
+  };
+
+  const handleSignUpClick = () => {
+    setActiveSignUp(!activeSignUp);
+    setActiveSignIn(false); // Close SignIn if open
+  };
   return (
     <>
     {Active&&
     <div className="w-[521px] h-[255px] bg-white pt-[36px] pl-[48px] absolute transform translate-x-[-111px] translate-y-[179px] overflow-hidden shadow-md">
       <p className="text-[#672797] text-[20px] font-semibold">Profile</p>
       <button className="flex flex-row w-[218px] h-[50px] mt-[15px] ml-[12px]"
-     onClick={() => {
-       if (activeSignIn===false) {
-         setactiveSignIn(!activeSignIn);
-        }else
-        handleSignInClose()
-      }}
+      onClick={handleSignInClick}
       >
         <span className="text-black ">
           <svg
@@ -43,12 +49,7 @@ const Profile = ({Active, onClose}) => {
         </span>
         <p className="pl-[15px]">Sign in</p>
       </button>
-      <button className="flex flex-row  w-[218px] h-[50px]  ml-[12px]" onClick={() => {
-        if (activeSignUp===false) {
-          setactiveSignUp(!activeSignUp);
-        }else
-        handleSignUpClose()
-      }} >
+      <button className="flex flex-row  w-[218px] h-[50px]  ml-[12px]" onClick={handleSignUpClick}>
         <svg
           xmlns="http://www.w3.org/2000/svg"
           width="24"
