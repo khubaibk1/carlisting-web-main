@@ -312,8 +312,8 @@ const Footer = () => {
                     <div>
                         <p>&copy; 2023 CarFig Ltd.  All right reserved.</p>
                     </div>
-                    <div>
-                        <ul className="flex gap-4 text-[#141415] font-[400] text-[14px] underline">
+                    <div className="">
+                        <ul className=" gap-4 text-[#141415] font-[400] text-[14px] underline hidden lg:flex md:flex sm:hidden xl:flex">
                             <a href="">
                                 <li className="">
                                     Terms & conditions

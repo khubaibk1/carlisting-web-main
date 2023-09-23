@@ -23,11 +23,8 @@ const Price = () => {
     const dropdownRef1 = useRef(null);
 
     const handleClickOutside = (event) => {
-        if (dropdownRef1.current && !dropdownRef1.current.contains(event.target)) {
-            setIsOpen(false);
-            toggleDropdown();
-        }
-    };
+       
+        };
      useEffect(() => {
         document.addEventListener('mousedown', handleClickOutside);
 
@@ -66,7 +63,7 @@ const Price = () => {
               <div
                 className="absolute pb-7 pt-2 px-2 z-10 mt-1 w-[412px]  bg-white border  text-base shadow-lg   focus:outline-none sm:text-sm"
                 
-                // ref={dropdownRef}
+                
               >
                 
                 <div className="w-[400px] h-[110px] bg-[#FFFFFF] p-[14px] ">

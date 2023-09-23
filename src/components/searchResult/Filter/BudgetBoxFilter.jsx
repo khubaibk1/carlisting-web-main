@@ -81,7 +81,7 @@ const BudgetBoxFilter = () => {
 
         {showBudgetBoxDropdown && (
           <div
-            className="absolute mt-[13px] shadow-xl bg-[#f3f4f4]"
+            className="absolute mt-[13px] shadow-xl bg-[#f3f4f4] z-[999]"
             style={{ boxShadow: "0 0 5px rgba(0, 0, 0, 0.5)" }}
             
           >

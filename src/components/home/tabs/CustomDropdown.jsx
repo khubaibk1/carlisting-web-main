@@ -85,7 +85,7 @@ const CustomDropdown = ({ options, initialValue, tab, subTab ,HoverPurple, set})
                 </span>
             </div>
             {isOpen && (
-                <div className={`absolute mt-2 z-50 ${set?"absolute pb-7 pt-2 px-2 z-10 mt-1 w-[412px]  bg-white border  text-base shadow-lg   focus:outline-none sm:text-sm":"w-[9rem]"}  h-[300px] ${scroll?overflow-y-scroll:''} bg-white shadow-lg rounded-md`} >
+                <div className={`absolute mt-2 z-[100] ${set?"absolute pb-7  pt-2 px-2 z-[2000] mt-1 w-[412px]  bg-white border  text-base shadow-lg   focus:outline-none sm:text-sm":"w-[9rem]"}  h-[300px] ${scroll?overflow-y-scroll:''} bg-white shadow-lg rounded-md`} >
                     {options.map((option) => (
                         <div
                             key={option}

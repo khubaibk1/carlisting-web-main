@@ -50,7 +50,7 @@ const Sort = () => {
                                         Sorted by:
                                     </Listbox.Label>
                                     <div className="relative ">
-                                        <Listbox.Button className="w-[213px] h-[36px] border-2 rounded-full  ">
+                                        <Listbox.Button className={`w-[213px] h-[36px] border-2 rounded-full  ${ open ? "border-[#09A122]" :!selected? "":selected ? "" : "border-blue-500"}`}>
                                             <span className="flex items-center  ">
 
                                                 <span className="ml-3 block truncate">

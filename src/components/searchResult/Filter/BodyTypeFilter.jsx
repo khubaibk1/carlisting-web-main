@@ -58,7 +58,8 @@ function BodyTypeFilter() {
         className="relative"
       >
         <button
-          className={`flex flex-row justify-around items-center w-[138px] h-[42px] border-[#D3D3D6] border-[2px] rounded-[24px] py-[10px] px-[16px] ${ showBodyTypeDropdown ? "border-[#09A122]" : isCheckboxSelected ? "border-blue-500" : ""}`}
+          className={`flex flex-row justify-around items-center w-auto h-[42px] border-[2px] rounded-[24px] py-[10px] px-[16px] ${ showBodyTypeDropdown ? "border-[#09A122]" : isCheckboxSelected ? "border-blue-500" : ""} `}
+          
           onClick={toggleDropdown}
         >
           <span
@@ -71,7 +72,7 @@ function BodyTypeFilter() {
 
         {showBodyTypeDropdown && (
           <div
-            className="absolute mt-[13px] shadow-xl bg-[#f3f4f4]"
+            className="absolute mt-[13px] shadow-xl bg-[#f3f4f4] z-[999]"
             style={{ boxShadow: "0 0 5px rgba(0, 0, 0, 0.5)" }}
           >
             <Image src={arrowtop} className="transform translate-y-[5px] ml-[30px] z-10" />

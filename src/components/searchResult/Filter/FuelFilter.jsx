@@ -67,7 +67,7 @@ function FuelFilter() {
 
         {showFuelDropdown && (
           <div
-            className="absolute mt-[13px] shadow-xl bg-[#f3f4f4]"
+            className="absolute mt-[13px] shadow-xl bg-[#f3f4f4] z-[999]"
             style={{ boxShadow: "0 0 5px rgba(0, 0, 0, 0.5)" }}
           >
             <Image src={arrowtop} className=" ml-[30px] transform translate-y-[5px] z-10" />

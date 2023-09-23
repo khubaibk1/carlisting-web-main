@@ -562,12 +562,12 @@ const UsedCar = () => {
         ],
     };
     return (
-        <div>
+        <div >
             <Wrapper>
                 <div className='flex flex-col justify-start items-start'>
                     <div className='flex gap-5 items-center underline'>
                         <a href="">
-                            <p className='text-[#141415] font-[500] text-[16px]'>
+                            <p className='text-[#141415] font-[500] text-[16px] '>
                                 Used Cars For Sale
                             </p>
                         </a>
@@ -581,16 +581,21 @@ const UsedCar = () => {
                         </a>
                     </div>
                     <div className='flex items-center justify-between w-full'>
-                        <div className='flex items-center gap-1 pt-5'>
-                            <p className='text-[28px] font-[600] text-[#141415]'>
-                                Used - Clear :
+                        <div className='flex items-center gap-1 pt-5 '>
+                            <p>
+                                <span className='text-[20px]  md:text-[28px] font-[600] text-[#141415]'>
+                                Used-Clear : 
+                                </span>
+                                <span className='text-[16px] font-none lg:hidden md:hidden xl:hidden'> 2020 Mercedes-Benz S550 in Washington, DC.</span>
                             </p>
-                            <p className='text-[28px] font-[400] text-[#141415]'>
-                                2020 Mercedes-Benz S550 in Washington, DC.
+
+                            <p className='text-[28px]  font-[400] text-[#141415] hidden lg:block md:block sm:hidden xl:block '>
+                                 2020 Mercedes-Benz S550 in Washington, DC.
                             </p>
+
                         </div>
-                        <div className='flex gap-3 items-center'>
-                            <button className='border rounded-full border-[#141415] py-2 px-3 text-[#141415]'>
+                        <div className='gap-3 items-center hidden lg:flex md:flex sm:hidden xl:flex'>
+                            <button className='border rounded-full border-[#141415] py-2 px-3 text-[#141415]'>  
                                 Set Notification
                             </button>
                             <button className='border rounded-full border-[#141415] py-2 px-3 text-[#141415]'>
@@ -601,12 +606,12 @@ const UsedCar = () => {
 
                     </div>
                     
-                    <div>
+                    <div className='hidden lg:block md:block sm:hidden xl:block '>
                         <Filters/>
                     </div>
 
                     
-                    <div className='flex justify-center items-center relative'>
+                    <div className='flex justify-center items-center relative w-[550px]  md:w-auto'>
                         <div className='grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-x-10'>
 
                             {
@@ -615,7 +620,7 @@ const UsedCar = () => {
                                         key={i}
                                         className="flex flex-col justify-center items-center py-5"
                                     >
-                                        <div className="bg-white flex flex-col w-[290px]  ">
+                                        <div className="bg-white flex flex-col w-[520px] sm:w-[344px] md:w-[290px]  ">
                                             <div>
                                                 <Slider {...settings} >
                                                     {
@@ -625,7 +630,7 @@ const UsedCar = () => {
                                                                 alt=""
                                                                 width={800}
                                                                 height={800}
-                                                                className="w-[300px] h-[190px] object-cover relative"
+                                                                className="w-[300px] h-[290px] md:h-[190px] object-cover relative"
                                                             />
 
 
@@ -634,12 +639,12 @@ const UsedCar = () => {
                                                 </Slider>
                                             </div>
                                             <button
-                                                className={`bg-white w-[30px] h-[30px] shadow-sm rounded-full absolute ml-[15.5rem] mt-[1rem] flex items-center justify-center`}
+                                                className={`bg-white w-[30px] h-[30px] shadow-sm rounded-full absolute ml-[24.5rem] md:ml-[15.5rem] mt-[1rem] flex items-center justify-center `}
                                                 onClick={() => handleButtonClick(i)}
                                             >
                                                 {isClicked[i] ? <AiFillHeart size={20} color="red" /> : <AiOutlineHeart size={20} />}
                                             </button>
-                                            <div className="flex  items-start pl-3 py-5">
+                                            <div className="flex   items-start pl-3 py-5 w-[450px] md:w-auto ">
                                                 <div className="flex flex-col ">
                                                     <h1 className={` font-[500] text-[16px] `}>
                                                         {item.title}
@@ -659,7 +664,7 @@ const UsedCar = () => {
                                                         </div>
 
                                                     </div>
-                                                    <div className='flex justify-between'>
+                                                    <div className='flex justify-between '>
                                                         <div className='flex flex-col '>
                                                             <p
                                                                 className={`text-[8px] text-[#737074] flex items-center gap-1 mt-1`}
@@ -698,7 +703,7 @@ const UsedCar = () => {
                                                                 {item.tele}
                                                             </p>
                                                         </div>
-                                                        <div className="flex flex-col ml-[10rem] absolute w-[120px] gap-1  text-center font-[500]">
+                                                        <div className="flex flex-col ml-[18.5rem] md:ml-[10rem]  absolute w-[120px] gap-1  text-center font-[500] ">
                                                             <p
                                                                 style={{ background: `${item.color1}` }}
                                                                 className="rounded-full py-[2px] text-[12px]"

@@ -23,10 +23,10 @@ const Year = () => {
     const dropdownRef2 = useRef(null);
 
     const handleClickOutside = (event) => {
-        if (dropdownRef2.current && !dropdownRef2.current.contains(event.target)) {
-            setIsOpen(false);
-            toggleDropdown();
-        }
+        // if (dropdownRef2.current && !dropdownRef2.current.contains(event.target)) {
+        //     setIsOpen(false);
+        //     toggleDropdown();
+        // }
     };
      useEffect(() => {
         document.addEventListener('mousedown', handleClickOutside);
@@ -52,7 +52,7 @@ const Year = () => {
           <button className="flex flex-row justify-between items-center w-[412px] h-[60px] border-[#D3D3D6] border-[1px]   py-[10px] px-[16px]"
           onClick={toggleDropdown}
           >
-            <span className=" text-[#141415] font-normal">Budget</span>
+            <span className=" text-[#141415] font-normal">Year</span>
             <span
                     className={`${isOpen ? 'transform rotate-180' : ''} transition-transform duration-300`}
                 >
