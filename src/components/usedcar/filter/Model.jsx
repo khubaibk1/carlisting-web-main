@@ -3,6 +3,22 @@ import Link from "next/link";
 import React, { useRef, useEffect, useState } from "react";
 import NewUsed from "./NewUsed";
 import ClearAll from "./ClearAll";
+import CustomDropdown from "@/components/home/tabs/CustomDropdown";
+import Year from "./Year";
+import Price from "./Price";
+import PriceType from "./PriceType";
+
+
+const Make=[
+    
+    "Aston Martin",
+    "Aston Martin",
+    "Aston Martin",
+    "Aston Martin",
+    "Aston Martin",
+    "Aston Martin",
+    
+  ]
 
 const Model = ({ isOpen, onClose }) => {
     const [selectedTab, setSelectedTab] = useState("card");
@@ -33,10 +49,10 @@ const Model = ({ isOpen, onClose }) => {
         >
             <div
                 ref={modalRef}
-                className="bg-white w-[430px] md:h-[700px] overflow-hidden md:w-[492x]  justify-center items-center  shadow-md"
+                className="bg-white w-[430px] md:h-[700px] overflow-hidden md:w-[492x]  justify-center items-center  shadow-md "
             >
                 <div className="flex items-center justify-between w-full border-b ">
-                    <p className="text-[24px] font-[500] py-4 md:py-5 px-4 md:px-8">
+                    <p className="text-[24px] font-[500] py-2 md:py-3 px-4 md:px-8">
                         Vehicle Filters
                     </p>
                     <svg onClick={onClose} className="mr-7 mt-1 cursor-pointer" xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 12 12" fill="none">
@@ -44,9 +60,16 @@ const Model = ({ isOpen, onClose }) => {
                     </svg>
 
                 </div>
-                <div className="flex flex-col items-center justify-center gap-y-5 w-full mt-4">
+                <div className="flex flex-col items-center justify-center gap-y-2 w-full mt-4 ">
                     <NewUsed/>
                     <ClearAll/>
+                    <PriceType/> 
+                    <Price/>
+                    <CustomDropdown  options={Make} initialValue="Make" HoverPurple={true} scroll={false} set={true}/>
+                    <CustomDropdown   options={Make} initialValue="Model" HoverPurple={true} scroll={false} set={true}/>
+                    <CustomDropdown   options={Make} initialValue="Milage" HoverPurple={true} scroll={false} set={true}/>
+                    <CustomDropdown   options={Make} initialValue="Distance" HoverPurple={true} scroll={false} set={true}/>
+                    <Year/>
 
                 </div>
             </div>

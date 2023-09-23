@@ -7,6 +7,7 @@ import "slick-carousel/slick/slick-theme.css";
 import Slider from "react-slick";
 import { AiOutlineHeart, AiFillHeart } from 'react-icons/ai';
 import Filters from '../searchResult/Filters';
+import PageCount from '../searchResult/PageCount';
 
 function SampleNextArrow(props) {
     const { onClick } = props;
@@ -727,8 +728,10 @@ const UsedCar = () => {
                             }
 
                         </div>
-
                     </div>
+                                <div className='flex justify-center items-center w-full h-[60px] mt-[30px]'>
+                                <PageCount/>
+                                </div>
                 </div>
             </Wrapper>
 

@@ -1,6 +1,6 @@
-import React, { useState, useEffect, useRef } from 'react';
+import React, { useState, useEffect, useRef ,scroll,handleOptionSelect } from 'react';
 
-const CustomDropdown = ({ options, initialValue, tab, subTab ,HoverPurple}) => {
+const CustomDropdown = ({ options, initialValue, tab, subTab ,HoverPurple, set}) => {
     const [isOpen, setIsOpen] = useState(false);
     const [selectedOption, setSelectedOption] = useState(initialValue);
     const dropdownRef = useRef(null);
@@ -69,7 +69,7 @@ const CustomDropdown = ({ options, initialValue, tab, subTab ,HoverPurple}) => {
         return (
             <div ref={dropdownRef} className="relative">
             <div
-                className={` px-6 py-2 rounded-md flex items-center justify-between gap-[25px] h-[50px] cursor-pointer`}
+                className={`${set?"w-[412px] h-[60px] border-[1px] px-6 py-2 rounded-md flex items-center justify-between cursor-pointer" : "px-6 py-2 rounded-md flex items-center justify-between gap-[25px] h-[50px] cursor-pointer "} `}
                 onClick={toggleDropdown}
             >
                 <span>{selectedOption}</span>
@@ -85,7 +85,7 @@ const CustomDropdown = ({ options, initialValue, tab, subTab ,HoverPurple}) => {
                 </span>
             </div>
             {isOpen && (
-                <div className="absolute mt-2 z-50 w-[9rem] h-[300px] overflow-y-scroll bg-white shadow-lg rounded-md">
+                <div className={`absolute mt-2 z-50 ${set?"absolute pb-7 pt-2 px-2 z-10 mt-1 w-[412px]  bg-white border  text-base shadow-lg   focus:outline-none sm:text-sm":"w-[9rem]"}  h-[300px] ${scroll?overflow-y-scroll:''} bg-white shadow-lg rounded-md`} >
                     {options.map((option) => (
                         <div
                             key={option}

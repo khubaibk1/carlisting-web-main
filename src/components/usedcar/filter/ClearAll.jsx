@@ -4,15 +4,15 @@ import { Listbox, Transition } from "@headlessui/react";
 const data = [
     {
         id: 1,
-        name: "New & Used",
+        name: "Close All",
     },
     {
         id: 2,
-        name: "New",
+        name: "Clear",
     },
     {
         id: 3,
-        name: "Used",
+        name: "All",
     },
 ];
 
@@ -44,12 +44,11 @@ const ClearAll = () => {
                                                     {selected.name}
                                                 </span>
                                             </span>
-                                            <span className="pointer-events-none absolute inset-y-0 right-4 flex items-center ">
-                                                <svg className={`transform rotate-${rotation} cursor-pointer transition-transform duration-500 ease-in-out`}
-                                                    onClick={rotateSVG} xmlns="http://www.w3.org/2000/svg" width="12" height="8" viewBox="0 0 12 8" fill="none">
-                                                    <path d="M6.38886 7.51891C6.18873 7.7665 5.81127 7.7665 5.61114 7.51891L0.596021 1.31431C0.331734 0.987339 0.564452 0.5 0.984878 0.5L11.0151 0.5C11.4355 0.5 11.6683 0.987339 11.404 1.31431L6.38886 7.51891Z" fill="#505057" />
-
+                                            <span className={`pointer-events-none absolute inset-y-0 right-4 flex items-center ${open ? 'transform rotate-180' : ''} transition-transform duration-300`}>
+                                                <svg  className={`transform  cursor-pointer transition-transform duration-500 ease-in-out`} xmlns="http://www.w3.org/2000/svg" width="29" height="29" viewBox="0 0 29 29" fill="none">
+                                                    <path d="M6.0056 9.93362C6.08688 9.85214 6.18344 9.78749 6.28974 9.74338C6.39604 9.69927 6.51001 9.67656 6.6251 9.67656C6.74019 9.67656 6.85415 9.69927 6.96046 9.74338C7.06676 9.78749 7.16332 9.85214 7.2446 9.93362L14.5001 17.1909L21.7556 9.93362C21.9199 9.76932 22.1427 9.67702 22.3751 9.67702C22.6075 9.67702 22.8303 9.76932 22.9946 9.93362C23.1589 10.0979 23.2512 10.3208 23.2512 10.5531C23.2512 10.7855 23.1589 11.0083 22.9946 11.1726L15.1196 19.0476C15.0383 19.1291 14.9418 19.1938 14.8355 19.2379C14.7292 19.282 14.6152 19.3047 14.5001 19.3047C14.385 19.3047 14.271 19.282 14.1647 19.2379C14.0584 19.1938 13.9619 19.1291 13.8806 19.0476L6.0056 11.1726C5.92411 11.0913 5.85946 10.9948 5.81535 10.8885C5.77124 10.7822 5.74854 10.6682 5.74854 10.5531C5.74854 10.438 5.77124 10.3241 5.81535 10.2178C5.85946 10.1115 5.92411 10.0149 6.0056 9.93362Z" fill="#141415" />
                                                 </svg>
+
                                             </span>
                                         </Listbox.Button>
 

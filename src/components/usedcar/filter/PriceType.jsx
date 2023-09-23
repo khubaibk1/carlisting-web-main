@@ -4,15 +4,15 @@ import { Listbox, Transition } from "@headlessui/react";
 const data = [
     {
         id: 1,
-        name: "New & Used",
+        name: "Any",
     },
     {
         id: 2,
-        name: "New",
+        name: "M or Less",
     },
     {
         id: 3,
-        name: "Used",
+        name: "Over M",
     },
 ];
 
@@ -20,7 +20,7 @@ function classNames(...classes) {
     return classes.filter(Boolean).join(" ");
 }
 
-const NewUsed = () => {
+const PriceType = () => {
    
 
    
@@ -113,4 +113,4 @@ const NewUsed = () => {
     );
 };
 
-export default NewUsed;
+export default PriceType;
